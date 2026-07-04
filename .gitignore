@@ -1,0 +1,35 @@
+# Python virtual environments (regenerate with: pip install -r requirements.txt)
+.venv/
+.venv13/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Working dir — exports & scratch land here while iterating; NEVER committed.
+# Blessed printables for a released version live in parts/<part>/release/ instead.
+build/
+
+# Generated CAD exports anywhere ...
+*.step
+*.stl
+*.3mf
+# ... EXCEPT the committed release artifacts users download without building:
+!parts/**/release/
+!parts/**/release/**
+
+# macOS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Local dev scratch (root-level _*.py helpers, preview PNGs, design-panel variants)
+/_*.py
+_stand_*.py
+_*.png
+
+# Never publish internal / hub-coupled files
+MESSAGES_TO_HUB.md
+CLAUDE.md
+CODEBASE_NOTES.md
+.env
+.env.*
+*.local.*

@@ -1,0 +1,12 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "explorer.excludeGitIgnore": false,
+  "OcpCadViewer.advanced.autostart": true,
+  "OcpCadViewer.advanced.initialPort": 3939,
+  "OcpCadViewer.view.dark": true,
+  "OcpCadViewer.view.axes": true,
+  "OcpCadViewer.view.axes0": true,
+  "OcpCadViewer.view.grid_XY": true,
+  "OcpCadViewer.view.orbit_control": true
+}

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strong Vibes Prints — print your own massager mounts</title>
+<meta name="description" content="Open, parametric 3D-printable mounts for a massager, from Europe Magic Wand. Every part shares the Strong Vibes Connect interface — a keyed diamond boss and socket clamped by one 1/4&quot;-20 screw. Fork the build123d source and print your own.">
+<meta name="rating" content="adult">
+<link rel="canonical" href="https://amok-products.github.io/strong-vibes-prints/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strong Vibes Prints — print your own massager mounts">
+<meta property="og:description" content="Parametric, printable mounts sharing the Strong Vibes Connect interface. Fork the build123d source and print your own.">
+<meta property="og:url" content="https://amok-products.github.io/strong-vibes-prints/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+<style>
+  /* Palette mirrors the Strong Vibes design system:
+     warm taupe "surface" scale + brass/gold "accent" scale, Inter + JetBrains Mono. */
+  :root{
+    --s950:#131210; --s900:#1E1B17; --s800:#2A2824; --s700:#4A4234;
+    --s500:#8A7F72; --s400:#B8AC9A; --s200:#EBE5DB; --s100:#F5F1EB;
+    --a700:#7E6022; --a600:#A47E2C; --a500:#C49A3A; --a400:#D4AA52; --a300:#DFC47A;
+    --green:#4ade80;
+    --bg:var(--s950); --ink:var(--s100); --muted:var(--s400); --line:var(--s700);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+  a{color:var(--a400);text-decoration:none}
+  a:hover{color:var(--a300);text-decoration:underline}
+  code{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
+    color:var(--a300)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  .adult{background:var(--s900);color:var(--muted);font-size:13px;text-align:center;
+    padding:9px 12px;border-bottom:1px solid var(--line);letter-spacing:.01em}
+  header.hero{padding:78px 0 46px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 380px at 50% -40%,rgba(196,154,58,.20),transparent 70%),
+      radial-gradient(760px 360px at 82% -10%,rgba(74,66,52,.55),transparent 70%),
+      linear-gradient(180deg,var(--s900),var(--s950) 70%)}
+  .kicker{letter-spacing:.2em;text-transform:uppercase;color:var(--a400);
+    font-size:12px;font-weight:700}
+  h1{font-size:46px;line-height:1.08;margin:14px 0 12px;font-weight:700;letter-spacing:-.02em}
+  h1 .g{background:linear-gradient(120deg,var(--a300),var(--a500));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lead{font-size:19px;color:var(--muted);max-width:660px}
+  .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;
+    font-size:15px;transition:all .15s ease}
+  .btn.primary{background:var(--a500);color:#fff;border:1px solid var(--a500)}
+  .btn.primary:hover{background:var(--a600);border-color:var(--a600);text-decoration:none}
+  .btn.ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
+  .btn.ghost:hover{background:var(--s800);border-color:var(--s500);text-decoration:none}
+  section{padding:38px 0;border-top:1px solid var(--line)}
+  h2{font-size:27px;margin:0 0 6px;font-weight:600;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 22px}
+  .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:35px}}
+  .card{background:var(--s800);border:1px solid var(--line);border-radius:12px;padding:22px;
+    transition:border-color .15s ease}
+  .card:hover{border-color:var(--a700)}
+  .card h3{margin:0 0 6px;font-size:19px;font-weight:600}
+  .card p{margin:0 0 10px;color:var(--muted)}
+  .card p:last-child{margin-bottom:0}
+  .tag{display:inline-block;font-size:11px;font-weight:600;color:var(--a300);
+    border:1px solid var(--a700);border-radius:999px;padding:2px 10px;margin-left:8px;
+    vertical-align:middle;letter-spacing:.04em}
+  model-viewer{width:100%;height:260px;background:radial-gradient(circle at 50% 40%,#1a1814,var(--s950));
+    border:1px solid var(--line);border-radius:10px;margin-bottom:14px;--poster-color:transparent}
+  .role{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--s500);margin-bottom:4px}
+  pre{background:var(--s950);border:1px solid var(--line);border-radius:12px;padding:18px;
+    overflow:auto;color:var(--green);font-size:13.5px;line-height:1.55;
+    font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+  .prompt-label{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;
+    text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--a500);display:inline-block}
+  ul.steps{margin:0;padding-left:20px;color:var(--muted)}
+  ul.steps li{margin-bottom:8px}
+  ul.steps b{color:var(--ink);font-weight:600}
+  footer{padding:32px 0 64px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+  .mark{color:var(--s500)}
+</style>
+</head>
+<body>
+<div class="adult">Adults only (18+). Hobbyist hardware — build and use at your own risk. Not a medical device.</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Strong Vibes Prints by europemagicwand.com</div>
+    <h1>Print your own<br><span class="g">massager mounts.</span></h1>
+    <p class="lead">Open, parametric 3D-printable parts from Europe Magic Wand®.
+      Every part shares one interface — <strong>Strong Vibes Connect</strong>, a keyed
+      diamond boss and socket clamped by a single <code>1/4"-20</code> screw — so any
+      boss plugs into any socket. Fork the build123d source and print exactly the fit
+      you want.</p>
+    <div class="cta">
+      <a class="btn primary" href="#print">Get printing →</a>
+      <a class="btn ghost" href="https://github.com/amok-products/strong-vibes-prints">View on GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The parts</h2>
+    <p class="sub">Drag to spin. All four mate through the same Strong Vibes Connect diamond.</p>
+    <div class="grid">
+      <div class="card">
+        <model-viewer src="strong_vibes_holder.glb" camera-controls auto-rotate
+          auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none"
+          shadow-intensity="0.6" exposure="1.05" environment-image="neutral"
+          touch-action="pan-y" alt="Strong Vibes holder — 3D model"></model-viewer>
+        <span class="role">Male</span>
+        <h3>Holder</h3>
+        <p>Snap-fit device holder. Carries the keyed diamond boss that plugs into any
+          Strong Vibes Connect socket. Best in flexible TPU.</p>
+      </div>
+      <div class="card">
+        <model-viewer src="strong_vibes_socket_180.glb" camera-controls auto-rotate
+          auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none"
+          shadow-intensity="0.6" exposure="1.05" environment-image="neutral"
+          touch-action="pan-y" alt="Strong Vibes socket 180 — 3D model"></model-viewer>
+        <span class="role">Female</span>
+        <h3>Socket 180</h3>
+        <p>The default keyed socket. One diamond pocket — the boss seats in a single
+          orientation (mod 180°) for a rigid, no-wobble mount.</p>
+      </div>
+      <div class="card">
+        <model-viewer src="strong_vibes_socket_30.glb" camera-controls auto-rotate
+          auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none"
+          shadow-intensity="0.6" exposure="1.05" environment-image="neutral"
+          touch-action="pan-y" alt="Strong Vibes socket 30 — 3D model"></model-viewer>
+        <span class="role">Female</span>
+        <h3>Socket 30</h3>
+        <p>Star socket — the diamond repeated every 30°, so the boss can seat at
+          twelve angles for stepwise rotational mounting.</p>
+      </div>
+      <div class="card">
+        <model-viewer src="strong_vibes_boss.glb" camera-controls auto-rotate
+          auto-rotate-delay="0" rotation-per-second="18deg" interaction-prompt="none"
+          shadow-intensity="0.6" exposure="1.05" environment-image="neutral"
+          touch-action="pan-y" alt="Strong Vibes boss — 3D model"></model-viewer>
+        <span class="role">Male</span>
+        <h3>Test boss</h3>
+        <p>A stand-in for the holder boss — the diamond on a round base with a real
+          1/4"-20 thread. Print it with a socket to bench-test the fit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Strong Vibes Connect <span class="tag">v1.0.0</span></h2>
+    <p class="sub">One mating interface, defined once, imported by every part — so the connection can never drift.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>How it mates</h3>
+        <p>A keyed diamond boss seats flat into a matching diamond socket and is
+          clamped by a <code>1/4"-20</code> camera/tripod screw down the joint axis.
+          The diamond is keyed (long axis ≠ short axis), so it seats in one
+          orientation — rigid and repeatable.</p>
+      </div>
+      <div class="card">
+        <h3>The frozen standard</h3>
+        <p>Long half-diagonal <code>DIA_A = 11.322 mm</code>, short
+          <code>DIA_B = 7.759 mm</code>, grip band <code>BAND_DEPTH = 2.0 mm</code>.
+          Read the full
+          <a href="https://github.com/amok-products/strong-vibes/blob/main/connect/strong-vibes-connect.md">Strong Vibes Connect standard →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="print">
+  <div class="wrap">
+    <h2>Print it</h2>
+    <p class="sub">No CAD needed for this path.</p>
+    <ul class="steps">
+      <li><b>Preview</b> — spin the part above to check it's what you want.</li>
+      <li><b>Get an export</b> — grab a <code>.stl</code> (straight into a slicer) or
+        <code>.step</code> from a part's <code>release/</code> folder. Blessed exports
+        are added as they're cut, so if a folder is empty, build one from source
+        (<a href="https://github.com/amok-products/strong-vibes-prints#build-from-source">instructions</a>).</li>
+      <li><b>Slice</b> — open it in Bambu Studio or PrusaSlicer.</li>
+      <li><b>Material</b> — Bambu TPU for AMS (68D) for the flexible snap-fit holder;
+        PLA Tough as a rigid alternative for sockets.</li>
+      <li><b>Assemble</b> — one <code>1/4"-20</code> screw clamps the joint. With the
+        socket tapped, the screw stays captive.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Build &amp; modify with your AI</h2>
+    <p class="sub">The parts are real, parametric Python. Change a number, rebuild, print a custom fit.</p>
+    <div class="prompt-label"><span class="dot"></span> paste to your AI</div>
+    <pre>Open parts/holder/strong_vibes_holder.py in the strong-vibes-prints repo.
+Make the boss buttress taller for strength — set boss_aspect to 1.4 —
+WITHOUT changing the Strong Vibes Connect mating diamond (DIA_A / DIA_B /
+BAND_DEPTH stay the standard). Rebuild, confirm is_valid, and export the STL.</pre>
+    <p>Set up build123d + the OCP CAD Viewer and read the full guide in the
+      <a href="https://github.com/amok-products/strong-vibes-prints#build-from-source">README</a>
+      and <a href="https://github.com/amok-products/strong-vibes-prints/blob/main/AGENTS.md">AGENTS.md</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>CAD (build123d source &amp; generated models) licensed
+       <a href="https://github.com/amok-products/strong-vibes-prints/blob/main/LICENSE">CC-BY-4.0</a>.
+       Names governed by
+       <a href="https://github.com/amok-products/strong-vibes-prints/blob/main/TRADEMARK.md">TRADEMARK.md</a>.
+       Part of the <a href="https://github.com/amok-products/strong-vibes">Strong Vibes</a> builder program.</p>
+    <p><span class="mark">Strong Vibes™ · Europe Magic Wand® ·</span> <a href="https://europemagicwand.com/strong-vibes-builder">europemagicwand.com/strong-vibes-builder</a></p>
+  </div>
+</footer>
+</body>
+</html>

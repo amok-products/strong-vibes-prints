@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "strongvibes"
+version = "0.1.0"
+description = "Strong Vibes printable parts — parametric build123d parts sharing the Strong Vibes Connect interface"
+requires-python = ">=3.13,<3.14"
+# Runtime deps live in requirements.txt (already in the venv); not pinned here so
+# `pip install -e .` only wires up the local `strongvibes` package without touching them.
+
+[tool.setuptools]
+packages = ["strongvibes"]
