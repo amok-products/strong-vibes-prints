@@ -40,7 +40,7 @@ a `release/` folder is empty, build from source (below) to generate the files.
    [interactive 3D viewer](https://amok-products.github.io/strong-vibes-prints/).
 2. **Get an export.** Grab a `.stl` (drop straight into a slicer) or `.step`
    (solid model to re-orient/tweak) from `parts/<part>/release/`, or build one
-   (see [Build from source](#build-from-source)).
+   (see [Build from source](#build-from-source) and [`EXPORTING.md`](EXPORTING.md)).
 3. **Slice it** in **Bambu Studio** or **PrusaSlicer**.
 4. **Material** — the holder is for **Europe Magic Wand®** models, tested in Bambu
    Lab **TPU for AMS (68D)** or **PLA Tough**; ordinary PLA will crack. For a perfect
@@ -104,13 +104,15 @@ update live.
    theme, axes, grid) are committed in [`.vscode/settings.json`](.vscode/settings.json).
 
 3. **Run & export.** Open a part's `.py`, Run it, and the live 3D preview updates
-   in the OCP CAD Viewer. Near the bottom of a part set `EXPORT = True` (often
-   already the default) and run it to write `.step`, `.stl`, and `.3mf` to the
-   gitignored **`build/`** working dir (via `strongvibes.build_path()`). Slice the
-   result in Bambu Studio / PrusaSlicer.
+   in the OCP CAD Viewer. A plain run previews only; prefix `SV_EXPORT=1` to also
+   write `.step`, `.stl`, and `.3mf` to the gitignored **`build/`** working dir
+   (via `strongvibes.build_path()`). Slice the result in Bambu Studio /
+   PrusaSlicer. See [`EXPORTING.md`](EXPORTING.md) for the full preview/export
+   workflow and how release files are blessed.
 
    ```bash
-   python parts/holder/strong_vibes_holder.py
+   python parts/holder/strong_vibes_holder.py               # preview only
+   SV_EXPORT=1 python parts/holder/strong_vibes_holder.py   # also write build/
    ```
 
    > **3MF note:** for threaded parts the `.3mf` write is best-effort —

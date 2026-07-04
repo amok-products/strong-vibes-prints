@@ -13,10 +13,11 @@ The boss plugs into either socket; a 1/4"-20 screw clamps the joint. The diamond
 dimensions come straight from the locked standard (strongvibes.DIA_A / DIA_B / BAND_DEPTH),
 so these test parts mate with every real part in the repo.
 
-Run:  python parts/connect/connect_test.py        (live preview in OCP CAD Viewer)
-Set EXPORT = True to write .step / .stl into build/.
+Run:     python parts/connect/connect_test.py                 (live preview; writes nothing)
+Export:  SV_EXPORT=1 python parts/connect/connect_test.py     (.step / .stl -> build/)
 ============================================================
 """
+import os
 from build123d import *
 from strongvibes import (strong_vibes_socket_180, strong_vibes_socket_30, strong_vibes_boss,
                  DIA_A, DIA_B, BAND_DEPTH, PLATE_T, EFF_THREAD, STANDARD_VERSION,
@@ -30,7 +31,7 @@ except Exception:
 __version__ = "1.0.0"      # bump per AGENTS.md on any geometry change
 VARIANT = "connect_test"   # the Strong Vibes Connect bench-test trio
 
-EXPORT = False             # False = preview only; True = also write .step / .stl into build/
+EXPORT = os.environ.get("SV_EXPORT", "0") == "1"   # preview-only by default; SV_EXPORT=1 also writes files
 
 
 # ============================================================
@@ -64,7 +65,7 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"  (viewer not available: {e})")
     if not EXPORT:
-        print("Preview only (set EXPORT = True to write .step / .stl into build/)")
+        print("Preview only (set SV_EXPORT=1 to write .step / .stl into build/)")
     else:
         for part, name in ((socket_180, "strong_vibes_socket_180"), (socket_30, "strong_vibes_socket_30"),
                            (boss, "strong_vibes_boss")):
