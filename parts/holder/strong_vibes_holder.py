@@ -4,16 +4,21 @@ Strong Vibes snap-fit holder v2  -  build123d version
 z = 0 at bottom of holder, device top edge at z = H
 Print: Bambu TPU for AMS (68D) or PLA Tough
 Requires:  pip install build123d bd_warehouse
-Run:       python3 strong_vibes_holder.py
-Exports:   .step  .stl  .3mf
+Run:       python parts/holder/strong_vibes_holder.py          (live preview; writes nothing)
+Export:    SV_EXPORT=1 python parts/holder/strong_vibes_holder.py   (.step / .stl / .3mf -> build/)
 ============================================================
 """
 
+import os
 from math import sin, cos, pi, radians, sqrt, hypot
 from build123d import *
 from bd_warehouse.thread import IsoThread
-from ocp_vscode import show
 from strongvibes import DIA_A, DIA_B, BAND_DEPTH, build_path   # the LOCKED mating standard (single source of truth)
+
+try:
+    from ocp_vscode import show
+except Exception:
+    show = None
 
 __version__ = "2.0.0"     # bump per AGENTS.md on any geometry change
 VARIANT = "strong_vibes_holder"     # the male Strong Vibes Connect device holder
@@ -87,7 +92,7 @@ quilt_open_skip = 46  # skip +/- deg around the snap opening (0 deg)
 quilt_boss_skip = 34  # skip +/- deg around the camera boss (180 deg)
 
 # ---------- workflow ----------
-EXPORT = True        # False = preview only (fast iteration); True = also write files
+EXPORT = os.environ.get("SV_EXPORT", "0") == "1"   # preview-only by default; SV_EXPORT=1 also writes files
 
 
 # ---------- derived ----------
@@ -409,23 +414,28 @@ print(f"Volume: {part.volume / 1000:.1f} cm^3   valid: {part.is_valid}")
 print(f"boss diamond = Strong Vibes Connect STANDARD (locked): DIA_A={dia_a:.3f}  DIA_B={dia_b:.3f}  "
       f"BAND_DEPTH={BAND_DEPTH:.1f} mm   (boss_aspect={boss_aspect} stretches the flare buttress only)")
 
-show(part, names=["strong_vibes_holder"])         # live preview in OCP CAD Viewer
+if __name__ == "__main__":
+    if show is not None:                                   # live preview in OCP CAD Viewer
+        try:
+            show(part, names=["strong_vibes_holder"])
+        except Exception as e:
+            print(f"  (viewer not available: {e})")
 
-if not EXPORT:
-    print("Preview only (set EXPORT = True to write .step / .stl / .3mf)")
-else:
-    export_step(part, build_path(f"{VARIANT}.step"))
-    export_stl(part, build_path(f"{VARIANT}.stl"), tolerance=0.05, angular_tolerance=0.3)
-    exported = [".step", ".stl"]
+    if not EXPORT:
+        print("Preview only (set SV_EXPORT=1 to write .step / .stl / .3mf)")
+    else:
+        export_step(part, build_path(f"{VARIANT}.step"))
+        export_stl(part, build_path(f"{VARIANT}.stl"), tolerance=0.05, angular_tolerance=0.3)
+        exported = [".step", ".stl"]
 
-    # 3mf is best-effort: lib3mf's strict manifold check rejects the helical thread
-    # mesh even when the solid is valid. STL/STEP slice fine (Bambu re-meshes).
-    try:
-        m = Mesher()
-        m.add_shape(part, linear_deflection=0.05, angular_deflection=0.5)
-        m.write(build_path(f"{VARIANT}_b123d.3mf"))
-        exported.append(".3mf")
-    except RuntimeError as e:
-        print(f"Skipped .3mf ({e}); use the .stl/.step for slicing.")
+        # 3mf is best-effort: lib3mf's strict manifold check rejects the helical thread
+        # mesh even when the solid is valid. STL/STEP slice fine (Bambu re-meshes).
+        try:
+            m = Mesher()
+            m.add_shape(part, linear_deflection=0.05, angular_deflection=0.5)
+            m.write(build_path(f"{VARIANT}_b123d.3mf"))
+            exported.append(".3mf")
+        except RuntimeError as e:
+            print(f"Skipped .3mf ({e}); use the .stl/.step for slicing.")
 
-    print(f"Exported to build/: {VARIANT}  ({'  '.join(exported)})")
+        print(f"Exported to build/: {VARIANT}  ({'  '.join(exported)})")

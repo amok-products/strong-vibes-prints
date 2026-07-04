@@ -134,7 +134,8 @@ Changing the **shared standard** (`strongvibes/strong_vibes_connect.py`) is a **
 - **Bump `__version__` in the SAME commit** as the geometry change. Never let code and
   version drift apart across commits.
 - **On a version bump, in the same commit:**
-  1. Regenerate the part's exports into `build/` (run the script with `EXPORT = True`).
+  1. Regenerate the part's exports into `build/` (`SV_EXPORT=1 python parts/<part>/<file>.py`;
+     see [`EXPORTING.md`](EXPORTING.md)).
   2. Copy the blessed files into `parts/<part>/release/`, **named with the version**,
      e.g. `strong_vibes_holder-2.1.0.stl`, `strong_vibes_holder-2.1.0.step`. `release/` **is committed**.
   3. Refresh the part's `images/` previews.
@@ -155,8 +156,9 @@ Changing the **shared standard** (`strongvibes/strong_vibes_connect.py`) is a **
 
 ## 6. Build & verify checklist (before committing a geometry change)
 
-1. **Run the part:** `python parts/<part>/<file>.py` (or run headless with the
-   `show()` call stripped/guarded).
+1. **Run the part:** `python parts/<part>/<file>.py` — headless-safe (no viewer
+   needed; preview + export only run under `__main__`). Add `SV_EXPORT=1` to also
+   write exports (see [`EXPORTING.md`](EXPORTING.md)).
 2. **Confirm validity:** the printed `is_valid` is `True`.
 3. **Confirm solid count:** it is a **single solid** — unless it is *intentionally*
    not (the part script may already drop stray fragments and report it).
