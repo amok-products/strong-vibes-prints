@@ -42,14 +42,15 @@ a `release/` folder is empty, build from source (below) to generate the files.
    (solid model to re-orient/tweak) from `parts/<part>/release/`, or build one
    (see [Build from source](#build-from-source)).
 3. **Slice it** in **Bambu Studio** or **PrusaSlicer**.
-4. **Material** (per the holder docstring): **Bambu TPU for AMS (68D)** —
-   flexible and grippy, ideal for the snap-fit holder — or **PLA Tough** as a
-   rigid alternative.
+4. **Material** — the holder is for **Europe Magic Wand®** models, tested in Bambu
+   Lab **TPU for AMS (68D)** or **PLA Tough**; ordinary PLA will crack. For a perfect
+   holder fit, add a **4 cm strip of Bambu Lab non-slip tape** to the lower back.
+   Sockets print fine in PLA Tough.
 5. **Orientation:** print the holder boss horizontal / device axis vertical, as
    exported.
 
-The joint is assembled with one **1/4"-20 screw** (a standard camera/tripod
-screw). With `FEMALE_THREAD` on, the socket is tapped so the screw stays captive.
+The joint is assembled with one **1/4"-20 × 9–10 mm** camera/tripod screw (Bambu
+Lab). With `FEMALE_THREAD` on, the socket is tapped so the screw stays captive.
 
 ---
 

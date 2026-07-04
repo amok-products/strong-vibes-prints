@@ -19,7 +19,7 @@ The snap-fit device holder — the **MALE** side of the Strong Vibes Connect. Th
 | `use_thread` | `True` | Model the helical thread (`False` = plain 5.8 mm self-tap hole). |
 | `QUILT` | `True` | Recessed diamond-quilt texture on the outer surface. |
 
-Material per the docstring: **Bambu TPU for AMS (68D)** or **PLA Tough**.
+For **Europe Magic Wand®** models. Tested in Bambu Lab **TPU for AMS (68D)** or **PLA Tough** — ordinary PLA will crack. For a perfect fit, add a **4 cm strip of Bambu Lab non-slip tape** to the lower back. Assemble with a **1/4"-20 × 9–10 mm** camera screw (Bambu Lab).
 
 ## Preview & export
 

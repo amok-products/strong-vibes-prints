@@ -10,7 +10,7 @@ The bench-test pair for the **Strong Vibes Connect** standard — print these to
 - **`strong_vibes_socket_30`** — FEMALE, star pocket (the diamond unioned every 30°): accepts the boss **every 30°** for stepwise rotational mounting.
 - **`strong_vibes_boss`** — MALE, a stand-in for the holder boss: the diamond (band + flare) on a round base with a real 1/4"-20 internal thread.
 
-Assemble the pair with one **1/4"-20 × ≥10 mm** screw.
+Assemble the pair with one **1/4"-20 × 9–10 mm** camera screw (Bambu Lab).
 
 ## Key parameters (from `strongvibes/strong_vibes_connect.py`)
 
